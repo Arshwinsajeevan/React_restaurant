@@ -1,0 +1,120 @@
+API call in js
+--------------
+
+-fetch
+-XMLhttp
+-async await
+
+-- useEffect is like ngOnInit
+
+
+Redirection in React   
+-------------------
+
+react-router-dom    - npm i react-router-dom
+
+import { BrowserRouter as Router,              -all routing need components
+         Routes,                               -to set path for each component
+         Route                                 -more than one path
+         } from 'react-router-dom'     
+
+
+- useparams  - hook used to access params from component url
+
+
+
+** REDUX
+  -------
+
+  coupling - many connection between parent and child component  (sharing data through one component to another component)
+
+  props drilling - in coupling if any intermediate component have errors then other component related to that component doesnt work
+
+      - to avoid props drilling we need to reduce coupling and make all components independent
+
+- For this react introduced a new technology - a state management technology - REDUX
+
+
+
+Redux process
+------------
+
+create a new js file to keep the states , all the components can access the js file
+
+
+- the components can access the data from the js file
+   but they cant update datas in js file
+
+
+
+
+                                                                                                          
+                              |-----------------|
+                              |                 |
+                              |     Reducer     |
+                              |                 |     ---------------------------------------------------------|
+                              |                 |                                                              |                 
+                              |                 |                                                              |         
+                              |                 |                                                              > 
+                              |-----------------|
+                                                                                                          |-----------------|                                                                             |-----------------|
+                                                                                                          |                 |
+                                                                                                          |     data.js     |
+                                     ^                                                                    |                 |
+                                     |                                                                    |                 |
+                                     |                                                                    |                 |
+                                     |                                                                    |      state      |
+                                     |                                                                    |-----------------|
+                                     |                                                                             | 
+                                     | Responce as paylod                                                          | 
+                                     |                                                                             | 
+                                     |                                                                             |     
+                                     |                                                                             > 
+                                     |                                                                     |-----------------|
+                                     |                                                                     |                 |
+                                     |                                                                     |    component    |
+                                     |                                                                     |                 |
+                                                                                                           |                 |
+                                                                                                           |                 |
+                                                                                                           |                 |
+                                                                                                           |-----------------|
+                              |-----------------|
+                              |                 |
+                              |     Action      |                                                                   |                        
+                              |                 |        < ---------------------------------------------------------|                   
+                              |                 |                            Dispatch
+                              |    (logic)      |
+                              |-----------------|
+
+        
+
+        Action    -> a file with all the logics to update the state
+        Dispatch  -> method used to dispatch the logic in action file when the component need state updation
+        Reducer   -> update the datas in js file according to the paylod response get from action file
+
+
+Libraries to apply Redux
+-----------------------
+
+1- REDUX
+2- REACT-REDUX
+3- REDUX-THUNK
+
+         npm i redux react-redux redux-thunk
+
+createStore() - method in REDUX used to create store in js file
+              - 2 args
+                   -1- reducer
+                   -2- middleware (used to make synchronous REDUX to asynchronous)
+
+applyMiddleware() - method in REDUX to apply middleware
+
+combineReducers() - method in REDUX used to combine all the reducers in js file
+
+thunk - methond in REDUX-THUNK used to create middleware
+
+         ->  ... is spread operator for store more data in array
+
+1. Create store
+2. Apply store in index.js  
+        - provider  - it is a tag used to pass the store (react-redux)
